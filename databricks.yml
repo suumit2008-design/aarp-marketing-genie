@@ -28,7 +28,7 @@ targets:
   default:
     default: true
     workspace:
-      host: https://dbc-ff1901e9-f7d0.cloud.databricks.com
+      host:https://edp-prod-asi.cloud.databricks.com
 
     variables:
       genie_space_id: 01f164c7718d173f9522b356b33518b6
