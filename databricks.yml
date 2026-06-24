@@ -31,5 +31,5 @@ targets:
       host: https://dbc-ff1901e9-f7d0.cloud.databricks.com
 
     variables:
-      genie_space_id: 01f0eb488c1e129f9f45157533da429d
+      genie_space_id: 01f164c7718d173f9522b356b33518b6?o=8374793140907003
       genie_space_name: AARP Marketing Genie
