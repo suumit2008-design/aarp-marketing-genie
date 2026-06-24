@@ -18,11 +18,11 @@ resources:
 
       # The resources which this app has access to.
       resources:
-        - name: genie
-          genie_space:
-            name: ${var.genie_space_name}
-            space_id: ${var.genie_space_id}
-            permission: CAN_RUN
+  - name: genie-space
+    genie_space:
+      name: ${var.genie_space_name}
+      space_id: ${var.genie_space_id}
+      permission: CAN_RUN
 
 targets:
   default:
