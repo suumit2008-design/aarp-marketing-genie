@@ -1,0 +1,113 @@
+@import "@databricks/appkit-ui/styles.css";
+@import url('https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700;800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&display=swap');
+
+/* =========================================================================
+   AARP Marketing Genie — design system
+   Ported from the approved prototype. AARP-warm brand on a clean app shell.
+   ========================================================================= */
+
+:root {
+  --aarp-red: #E4002B; --aarp-red-d: #B80022;
+  --aarp-red-t: rgba(228,0,43,.08); --aarp-red-t2: rgba(228,0,43,.14);
+  --ink: #1d1a19; --ink-2: #5b5550; --ink-3: #8a837c; --ink-4: #b4ada5;
+  --bg: #f7f5f2; --surface: #ffffff; --surface-2: #faf8f4; --surface-3: #f3efe9;
+  --line: #e7e2db; --line-2: #efeae3; --line-3: #d9d2c8;
+  --c-navy: #264a6b; --c-teal: #2f8f8a;
+  --sans: 'Libre Franklin', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  --serif: 'Source Serif 4', Georgia, 'Times New Roman', serif;
+  --r-s: 8px; --r-m: 12px; --r-l: 18px;
+  --sh-s: 0 1px 2px rgba(40,30,20,.05), 0 1px 3px rgba(40,30,20,.04);
+  --sh-m: 0 4px 14px rgba(40,30,20,.07), 0 1px 3px rgba(40,30,20,.05);
+  --sh-l: 0 18px 50px rgba(40,30,20,.14), 0 4px 12px rgba(40,30,20,.06);
+
+  /* ---- Override AppKit UI tokens so library components (GenieChat) inherit
+     the AARP brand. AARP red expressed in oklch for the appkit theme. ---- */
+  --primary: oklch(0.575 0.233 19);
+  --primary-foreground: oklch(1 0 0);
+  --ring: oklch(0.575 0.233 19);
+  --accent: oklch(0.955 0.028 19);
+  --accent-foreground: oklch(0.5 0.2 19);
+  --background: oklch(0.974 0.004 80);
+  --foreground: oklch(0.22 0.006 50);
+  --sidebar-primary: oklch(0.575 0.233 19);
+  --sidebar-primary-foreground: oklch(1 0 0);
+  --sidebar-ring: oklch(0.575 0.233 19);
+  --font-sans: var(--sans);
+  --font-serif: var(--serif);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --primary: oklch(0.62 0.235 20);
+    --primary-foreground: oklch(1 0 0);
+    --ring: oklch(0.62 0.235 20);
+    --accent: oklch(0.3 0.08 20);
+    --accent-foreground: oklch(0.92 0.03 20);
+    --sidebar-primary: oklch(0.62 0.235 20);
+    --sidebar-primary-foreground: oklch(1 0 0);
+    --sidebar-ring: oklch(0.62 0.235 20);
+  }
+}
+
+body {
+  font-family: var(--sans);
+  color: var(--ink);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+.ag-serif { font-family: var(--serif); }
+
+/* ---------- App shell ---------- */
+.ag-topbar { height: 56px; display: flex; align-items: center; gap: 16px; padding: 0 20px; background: var(--surface); border-bottom: 1px solid var(--line); }
+.ag-wordmark { font-weight: 800; font-size: 21px; letter-spacing: -.02em; color: var(--aarp-red); line-height: 1; }
+.ag-brandlock { display: flex; align-items: center; gap: 11px; }
+.ag-brandlock .ag-divline { width: 1px; height: 22px; background: var(--line-3); }
+.ag-appname { font-weight: 600; font-size: 14.5px; color: var(--ink); letter-spacing: -.01em; display: flex; align-items: center; gap: 7px; }
+.ag-top-right { margin-left: auto; display: flex; align-items: center; gap: 14px; }
+.ag-help { width: 32px; height: 32px; border-radius: 50%; border: 1px solid var(--line); background: var(--surface); color: var(--ink-2); display: flex; align-items: center; justify-content: center; }
+.ag-help:hover { border-color: var(--aarp-red); color: var(--aarp-red); }
+.ag-avatar { width: 32px; height: 32px; border-radius: 50%; background: linear-gradient(135deg,#3a5d7d,#264a6b); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 13px; }
+
+/* persona toggle */
+.ag-persona { display: flex; background: var(--surface-3); border-radius: 999px; padding: 3px; gap: 2px; border: 1px solid var(--line-2); }
+.ag-persona button { border: 0; background: transparent; color: var(--ink-2); font-weight: 600; font-size: 12.5px; padding: 5px 13px; border-radius: 999px; cursor: pointer; }
+.ag-persona button.on { background: var(--surface); color: var(--ink); box-shadow: var(--sh-s); }
+.ag-persona-wrap { display: flex; align-items: center; gap: 8px; }
+.ag-persona.is-future { opacity: .5; }
+.ag-persona.is-future button { cursor: not-allowed; }
+.ag-persona.is-future button.on { color: var(--ink-2); }
+.ag-soon { font-size: 10px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-3); background: var(--surface-3); border: 1px solid var(--line-2); padding: 3px 7px; border-radius: 999px; }
+
+.ag-rail { flex: 0 0 64px; background: var(--surface); border-right: 1px solid var(--line); display: flex; flex-direction: column; align-items: center; padding: 14px 0; gap: 6px; }
+.ag-railbtn { width: 42px; height: 42px; border-radius: 11px; border: 0; background: transparent; color: var(--ink-3); display: flex; align-items: center; justify-content: center; position: relative; transition: .14s; cursor: pointer; }
+.ag-railbtn:hover { background: var(--surface-3); color: var(--ink); }
+.ag-railbtn.on { background: var(--aarp-red-t); color: var(--aarp-red); }
+.ag-railbtn.on::before { content: ""; position: absolute; left: -14px; top: 9px; bottom: 9px; width: 3px; border-radius: 3px; background: var(--aarp-red); }
+.ag-rail-spacer { flex: 1 1 auto; }
+
+/* ---------- shared bits ---------- */
+.ag-icon { display: inline-flex; flex: none; }
+.ag-icon svg { display: block; }
+.ag-chip { display: inline-flex; align-items: center; gap: 7px; border: 1px solid var(--line-3); background: var(--surface); color: var(--ink-2); font-weight: 500; font-size: 13px; padding: 7px 13px; border-radius: 999px; transition: .14s; cursor: pointer; }
+.ag-chip:hover { border-color: var(--aarp-red); color: var(--aarp-red); background: var(--aarp-red-t); }
+.ag-askbar { display: flex; align-items: center; gap: 12px; background: var(--surface); border: 1px solid var(--line-3); border-radius: 14px; padding: 14px 16px; box-shadow: var(--sh-s); }
+.ag-askbar input { flex: 1; border: 0; outline: 0; font-family: inherit; font-size: 15px; color: var(--ink); background: transparent; }
+.ag-askbar input::placeholder { color: var(--ink-3); }
+.ag-send { width: 38px; height: 38px; flex: none; border-radius: 10px; border: 0; background: var(--aarp-red); color: #fff; display: flex; align-items: center; justify-content: center; transition: .14s; cursor: pointer; }
+.ag-send:hover { background: var(--aarp-red-d); }
+
+/* starter question rows */
+.ag-q { display: flex; align-items: center; gap: 11px; width: 100%; text-align: left; background: transparent; padding: 12px; border-radius: 10px; color: var(--ink); font-size: 14px; font-weight: 500; line-height: 1.35; transition: .13s; border: 1px solid transparent; cursor: pointer; }
+.ag-q:hover { background: var(--surface); border-color: var(--line-2); box-shadow: var(--sh-s); }
+.ag-q .ag-qarrow { margin-left: auto; color: var(--ink-4); transition: .14s; flex: none; }
+.ag-q:hover .ag-qarrow { color: var(--aarp-red); transform: translateX(2px); }
+.ag-qicon { width: 30px; height: 30px; border-radius: 8px; flex: none; display: flex; align-items: center; justify-content: center; }
+
+.ag-scroll { height: 100%; overflow-y: auto; }
+.ag-scroll::-webkit-scrollbar { width: 9px; }
+.ag-scroll::-webkit-scrollbar-thumb { background: var(--line-3); border-radius: 9px; border: 2px solid var(--bg); }
+
+/* genie answer bits (used by branded chat surfaces) */
+.ag-card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-m); box-shadow: var(--sh-s); }
+.ag-genie-badge { width: 30px; height: 30px; border-radius: 9px; background: linear-gradient(135deg,#ff3355,var(--aarp-red)); color: #fff; display: flex; align-items: center; justify-content: center; box-shadow: 0 3px 9px rgba(228,0,43,.28); }
