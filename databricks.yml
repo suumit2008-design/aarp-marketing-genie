@@ -14,7 +14,7 @@ resources:
       description: "Node.js app with AI/BI Genie for natural language data queries"
       source_code_path: ./
       user_api_scopes:
-        - dashboards.genie
+        genie
 
       # The resources which this app has access to.
       resources:
